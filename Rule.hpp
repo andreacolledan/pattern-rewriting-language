@@ -17,6 +17,15 @@ class Rule {
         Rule(Pattern lhs, Pattern rhs);
 
         /**
+         * @brief Construct a new exhaustible Rule object which rewrites the lhs pattern to the ths pattern.
+         * 
+         * @param lhs the pattern to rewrite,
+         * @param rhs the pattern to rewrite it to.
+         * @param uses the limit tot the number of times the rule can be used
+         */
+        Rule(Pattern lhs, Pattern rhs, int uses);
+
+        /**
          * @brief Get the left-hand side of the rewrite rule
          * 
          * @return the left-hand side of the rewrite rule 
@@ -30,6 +39,21 @@ class Rule {
          */
         Pattern getRhs();
         
+        /**
+         * @brief Determine if a rule can be used or is exhausted
+         * 
+         * @return true if the rule has still at least a use left
+         * @return false if the rule is exhausted
+         */
+        bool canBeUsed();
+
+        /**
+         * @brief Consume a use of this rule
+         * 
+         */
+        void consume();
+        
     private:
         Pattern lhs, rhs;
+        int uses;
 };

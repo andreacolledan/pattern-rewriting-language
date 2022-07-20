@@ -1,10 +1,10 @@
 #include "Rule.hpp"
 
 const Symbol WATER = Symbol('.');
-const Symbol CURSOR = Symbol('@');
+const Symbol CLAND = Symbol('@');
 
 Pattern pattern1 = Pattern(new Symbol*[10] {
-    new Symbol[10] {CURSOR, WATER, WATER, WATER, WATER, WATER, WATER, WATER, WATER, WATER},
+    new Symbol[10] {CLAND, WATER, WATER, WATER, WATER, WATER, WATER, WATER, WATER, WATER},
     new Symbol[10] {WATER, WATER, WATER, WATER, WATER, WATER, WATER, WATER, WATER, WATER},
     new Symbol[10] {WATER, WATER, WATER, WATER, WATER, WATER, WATER, WATER, WATER, WATER},
     new Symbol[10] {WATER, WATER, WATER, WATER, WATER, WATER, WATER, WATER, WATER, WATER},
@@ -13,16 +13,16 @@ Pattern pattern1 = Pattern(new Symbol*[10] {
     new Symbol[10] {WATER, WATER, WATER, WATER, WATER, WATER, WATER, WATER, WATER, WATER},
     new Symbol[10] {WATER, WATER, WATER, WATER, WATER, WATER, WATER, WATER, WATER, WATER},
     new Symbol[10] {WATER, WATER, WATER, WATER, WATER, WATER, WATER, WATER, WATER, WATER},
-    new Symbol[10] {WATER, WATER, WATER, WATER, WATER, WATER, WATER, WATER, WATER, CURSOR},
+    new Symbol[10] {WATER, WATER, WATER, WATER, WATER, WATER, WATER, WATER, WATER, CLAND},
     }, 10, 10);
 Pattern pattern2 = Pattern(new Symbol*[1] {
-    new Symbol[2] {CURSOR, WATER}
+    new Symbol[2] {CLAND, WATER}
     }, 1, 2);
 Pattern pattern3 = Pattern(new Symbol*[1] {
-    new Symbol[2] {WATER, CURSOR}
+    new Symbol[2] {WATER, CLAND}
     }, 1, 2);
 Pattern pattern4 = Pattern(new Symbol*[1] {
-    new Symbol[2] {CURSOR, CURSOR}
+    new Symbol[2] {CLAND, CLAND}
     }, 1, 2);
 Pattern pattern5 = Pattern(new Symbol*[1] {
     new Symbol[2] {WATER, WATER}

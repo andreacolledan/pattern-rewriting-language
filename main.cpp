@@ -2,7 +2,7 @@
 
 #include "Rule.hpp"
 
-#include "program3.cpp" //"Program to load (cpp file with rule and field objects)"
+#include "program6.cpp" //"Program to load" (cpp file with rule and field objects)
 
 uint64_t timeSinceEpochMillisec() {
   using namespace std::chrono;
@@ -19,11 +19,12 @@ int main(int, char**) {
     uint64_t before = timeSinceEpochMillisec();
 
     while(ruleIndex < numberOfRules) {
-        if (field.apply(ruleSet[ruleIndex])) {
-            //If a rule applies successfully, return to the top of the ruleset and continue
+        if (ruleSet[ruleIndex].canBeUsed() && field.apply(ruleSet[ruleIndex])) {
+            /*If a rule is not exhausted and it catually applies successfully,
+            consume one of its uses, return to the top of the ruleset and continue*/
             //field.prettyPrint(); //show new state
+            ruleSet[ruleIndex].consume();
             ruleIndex = 0;
-            continue;
         } else {
             //Otherwise we check the next rule
             ruleIndex++;
