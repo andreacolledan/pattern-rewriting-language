@@ -2,7 +2,9 @@
 
 #include "Rule.hpp"
 
-#include "program6.cpp" //"Program to load" (cpp file with rule and field objects)
+//PROVISIONAL
+#include "examples/program6.cpp" //"Program to load" (cpp file with rule and field objects)
+//PROVISIONAL
 
 uint64_t timeSinceEpochMillisec() {
   using namespace std::chrono;
