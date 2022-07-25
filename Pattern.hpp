@@ -63,6 +63,42 @@ class Pattern {
          */
         void prettyPrint();
 
+        /**
+         * @brief Check if this pattern is the empty (trivial) pattern
+         * 
+         * @return true if this pattern is empty
+         * @return false if this pattern is not empty
+         */
+        bool isEmpty();
+
+        /**
+         * @brief Check if this pattern contains one or more wildcard symbols
+         * 
+         * @return true if this pattern contains at least one wildcard symbol
+         * @return false if this pattern contains no wildcard symbol
+         */
+        bool containsWildcard();
+
+        /**
+         * @brief Get a list of all distinct symbols in the pattern which are not wildcards
+         * 
+         * @return a list of all distinct symbols in the pattern
+         */
+        std::vector<Symbol> getSymbols();
+
+        /**
+         * @brief Check if this pattern is entirely made up of symbols from symbols and wildcards
+         * 
+         * @param symbols the list of symbols that may make up this pattern
+         * @return true if this pattern is exclusively made up of symbols from symbols
+         * @return false if at least one symbol in this pattern does not come from symbols
+         */
+        bool madeUpOf(std::vector<Symbol> symbols);
+
+        int getHeight();
+
+        int getWidth();
+
     private:
         int width, height;
         Symbol** internalPattern;
@@ -78,4 +114,14 @@ class Pattern {
          * @return false if this pattern's sub-pattern and rhs differ in at least one symbol
          */
         bool compare(Pattern pattern, int vOffset, int hOffset, Orientation orientation);
+
+        /**
+         * @brief Check if symbol appears among symbols
+         * 
+         * @param symbol the symbol to be checked for belonging
+         * @param symbols the list of symbols that it may belong to
+         * @return true if symbol occurs in symbols
+         * @return false if symbol does not occur in symbols
+         */
+        static bool symbolIsIn(Symbol symbol, std::vector<Symbol> symbols);
 };

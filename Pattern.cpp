@@ -129,3 +129,58 @@ void Pattern::prettyPrint() {
     }
     std::cout << std::endl;
 }
+
+bool Pattern::isEmpty() {
+    return internalPattern == NULL;
+}
+
+bool Pattern::containsWildcard() {
+    for (int i = 0; i < height; i++) {
+        for (int j = 0; j < width; j++) {
+            if (internalPattern[i][j].isWildcard()) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
+std::vector<Symbol> Pattern::getSymbols() {
+    std::vector<Symbol> symbols;
+    for (int i = 0; i < height; i++) {
+        for (int j = 0; j < width; j++) {
+            if(!symbolIsIn(internalPattern[i][j], symbols) && !internalPattern[i][j].isWildcard()) {
+                symbols.push_back(internalPattern[i][j]);
+            }
+        }
+    }
+    return symbols;
+}
+
+bool Pattern::symbolIsIn(Symbol symbol, std::vector<Symbol> symbols) {
+    for (int i = 0; i < symbols.size(); i++) {
+        if ((symbol.isWildcard() && symbols[i].isWildcard()) //If both are wildcards or...
+            || !symbol.isWildcard() && !symbols[i].isWildcard() && Symbol::compare(symbol, symbols[i])) {//neither of them are but they match
+                return true;
+            }
+    }
+    return false;
+}
+
+bool Pattern::madeUpOf(std::vector<Symbol> symbols) {
+    std::vector<Symbol> theseSymbols = getSymbols();
+    for (int i = 0; i < theseSymbols.size(); i++) {
+        if (!symbolIsIn(theseSymbols[i], symbols)) {
+                return false;
+            }
+    }
+    return true;
+}
+
+int Pattern::getHeight() {
+    return height;
+}
+
+int Pattern::getWidth() {
+    return width;
+}
