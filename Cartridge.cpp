@@ -22,6 +22,13 @@ Pattern Cartridge::getField() {
 }
 
 bool Cartridge::check() {
+    //Check that the starting field is rectangular
+    if (!field.isRectangular()) {
+        if (debug >= DebugLevel::Print) {
+        std::cerr << "Error: field is misshapen" << std::endl;
+        }
+        return false;
+    }
     //Check that the starting field is not empty (uninitialized)
     if (field.isEmpty()) {
         if (debug >= DebugLevel::Print) {
@@ -47,6 +54,19 @@ bool Cartridge::check() {
     for (int i = 0; i < ruleSet.size(); i++) {
         Pattern lhs = ruleSet[i].getLhs();
         Pattern rhs = ruleSet[i].getRhs();
+        //Check that both patterns are actually rectangular
+        if (!lhs.isRectangular()) {
+            if (debug >= DebugLevel::Print) {
+            std::cerr << "Error: LHS of rule " << std::to_string(i) << " is misshapen" << std::endl;
+            }
+            return false;
+        }
+        if (!rhs.isRectangular()) {
+            if (debug >= DebugLevel::Print) {
+            std::cerr << "Error: RHS of rule " << std::to_string(i) << " is misshapen" << std::endl;
+            }
+            return false;
+        }
         //Check that all symbols occurring on both sides of the rule are declared or wildcards
         if (!lhs.madeUpOf(symbols)) {
             if (debug >= DebugLevel::Print) {

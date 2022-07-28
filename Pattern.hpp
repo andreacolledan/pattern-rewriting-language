@@ -100,6 +100,14 @@ class Pattern {
          */
         bool madeUpOf(std::vector<Symbol> symbols);
 
+        /**
+         * @brief Check if the pattern is actually rectangular (i.e. all rows are of length width)
+         * 
+         * @return true if the pattern is rectangular
+         * @return false if at least two rows differ in length
+         */
+        bool isRectangular();
+
         int getHeight();
 
         int getWidth();

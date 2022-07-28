@@ -193,3 +193,12 @@ int Pattern::getHeight() {
 int Pattern::getWidth() {
     return width;
 }
+
+bool Pattern::isRectangular() {
+    for(int i = 0; i < internalPattern.size(); i++) {
+        if (internalPattern[i].size() != width) {
+            return false;
+        } 
+    }
+    return true;
+}
