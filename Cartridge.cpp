@@ -3,7 +3,7 @@
 #include <iostream>
 
 
-Cartridge::Cartridge() : field(NULL, 0, 0), debug(DebugLevel::None) {}
+Cartridge::Cartridge() : debug(DebugLevel::None) {}
 
 void Cartridge::defineSymbol(Symbol symbol) {
     symbols.push_back(symbol);

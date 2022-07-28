@@ -20,14 +20,19 @@ class Rule; //forward declaration
  */
 class Pattern {
     public:
+
         /**
-         * @brief Construct a new Pattern object from a 2d array of symbols, its height and width.
+         * @brief Construct a new empty Pattern object
          * 
-         * @param pattern The 2d array of Symbol
-         * @param height The height of the array (first dimension)
-         * @param width The width of the array (second dimension)
          */
-        Pattern(Symbol** pattern, int height, int width);
+        Pattern();
+
+        /**
+         * @brief Construct a new Pattern object from a 2d array of symbols
+         * 
+         * @param pattern the 2d vector containing the symbols of the pattern
+         */
+        Pattern(std::vector<std::vector<Symbol>> pattern);
 
         /**
          * @brief Search this pattern for occurrences of pattern p.
@@ -101,7 +106,7 @@ class Pattern {
 
     private:
         int width, height;
-        Symbol** internalPattern;
+        std::vector<std::vector<Symbol>> internalPattern;
 
         /**
          * @brief Compare a sub-pattern of this pattern with a second pattern for equality.

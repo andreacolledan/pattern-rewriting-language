@@ -3,7 +3,16 @@
 
 #include <iostream>
 
-Pattern::Pattern(Symbol** p, int h, int w) : width(w), height(h), internalPattern(p) {}
+Pattern::Pattern() {/*Warning, this might not implicitly initialize an empty vector the way I think*/}
+
+Pattern::Pattern(std::vector<std::vector<Symbol>> pattern) : internalPattern(pattern) {
+    height = pattern.size();
+    if (height != 0) {
+        width = pattern[0].size();
+    } else {
+        width = 0;
+    }
+}
 
 bool Pattern::compare(Pattern p, int vOffset, int hOffset, Orientation o) {
     if ((o == Orientation::East || o == Orientation::West) && (width < p.width + hOffset || height < p.height + vOffset)) {
@@ -131,7 +140,7 @@ void Pattern::prettyPrint() {
 }
 
 bool Pattern::isEmpty() {
-    return internalPattern == NULL;
+    return height == 0 && width == 0;
 }
 
 bool Pattern::containsWildcard() {
