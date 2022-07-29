@@ -1,0 +1,13 @@
+Symbols ~, c, #, +
+
+Apply rules
+
+~ -5> c
+c~ -> #c
+c -> #
+#~ -> #+
+#++# -> ####
+#+# -> ###
+
+
+Starting from ~ (30,100)

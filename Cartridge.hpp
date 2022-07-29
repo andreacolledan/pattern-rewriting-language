@@ -3,9 +3,25 @@
 #include "Rule.hpp"
 
 #include <vector>
+#include <chrono>
 
+/**
+ * @brief The amount of information to send to stdout during execution of the cartridge
+ * 
+ */
 enum class DebugLevel {
-    None, Print, Verbose
+    /**
+     * @brief No information is printed
+     */
+    None,
+    /**
+     * @brief Only the final state and the elapsed time are printed
+     */
+    Print, 
+    /**
+     * @brief Initial, intermediate and final states are printed
+     */
+    Verbose
 };
 
 /**
@@ -32,6 +48,8 @@ class Cartridge {
         void execute();
 
         void setDebugLevel(DebugLevel dl);
+
+        std::string toString();
         
     private:
         std::vector<Symbol> symbols;

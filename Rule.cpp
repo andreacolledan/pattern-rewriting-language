@@ -22,3 +22,7 @@ bool Rule::canBeUsed() {
 void Rule::consume() {
     uses--;
 }
+
+int Rule::getUses() {
+    return uses;
+}

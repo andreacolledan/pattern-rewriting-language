@@ -130,13 +130,20 @@ bool Pattern::apply(Rule r) {
 }
 
 void Pattern::prettyPrint() {
+    std::cout << toString() << std::endl;
+}
+
+std::string Pattern::toString() {
+    std::string patternString;
     for (int i = 0; i < height; i++) {
         for (int j = 0; j < width; j++) {
-            std::cout << internalPattern[i][j].toString();
+            patternString += internalPattern[i][j].toString();
         }
-        std::cout << std::endl;
+        if (i != height-1) {
+            patternString += "\n";
+        }
     }
-    std::cout << std::endl;
+    return patternString;
 }
 
 bool Pattern::isEmpty() {

@@ -114,6 +114,7 @@ void Cartridge::execute() {
             /*If a rule is not exhausted and it catually applies successfully,
             consume one of its uses, return to the top of the ruleset and continue*/
             if(debug == DebugLevel::Verbose) {
+                std::cout << "Applied rule " << std::to_string(ruleIndex) << std::endl;
                 field.prettyPrint();
             } 
             ruleSet[ruleIndex].consume();
@@ -134,4 +135,29 @@ void Cartridge::execute() {
 
 void Cartridge::setDebugLevel(DebugLevel dl) {
     debug = dl;
+}
+
+std::string Cartridge::toString() {
+    std::string symbolString = "Symbols: [";
+    for (int i = 0; i < symbols.size(); i++) {
+        symbolString += symbols[i].toString();
+        if (i != symbols.size()-1) {
+            symbolString += ", ";
+        }
+    }
+    symbolString += "]\n";
+    std::string ruleString = "Rules: [\n";
+    for (int i = 0; i < ruleSet.size(); i++) {
+        ruleString += "#" + std::to_string(i) + ": ";
+        std::string arrowString = " -";
+        if(ruleSet[i].getUses()>=0) {
+            arrowString += std::to_string(ruleSet[i].getUses());
+        }
+        arrowString += "> ";
+        ruleString += ruleSet[i].getLhs().toString() + arrowString + ruleSet[i].getRhs().toString() + "\n";
+    }
+    ruleString += "]\n";
+    std::string startingFieldString = "Field: \n" + field.toString();
+    
+    return symbolString + ruleString + startingFieldString;
 }

@@ -68,6 +68,8 @@ class Pattern {
          */
         void prettyPrint();
 
+        std::string toString();
+
         /**
          * @brief Check if this pattern is the empty (trivial) pattern
          * 

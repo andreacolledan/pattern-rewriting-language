@@ -52,6 +52,8 @@ class Rule {
          * 
          */
         void consume();
+
+        int getUses();
         
     private:
         Pattern lhs, rhs;
