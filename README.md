@@ -21,15 +21,15 @@ $ meson build
 $ meson compile -C build
 ```
 
-Finally, you can run the example `islands.prl` (or any other PRL file, for that matter) with
+Finally, you can run a PRL program `program.prl` by navigating to the `build` folder and running
 
 ```
-$ build/prl examples/islands.prl
+$ prl program.prl
 ```
 
-For a list of supported options, run
+Some example programs are included in the `examples` folder. For a list of supported command-line options, run
 ```
-$ build/prl --help
+$ prl --help
 ```
 
 ## The PRL language
