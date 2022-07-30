@@ -4,11 +4,13 @@ project('prl', 'cpp',
 
 cmake = import('cmake')
 
-# Configure the CMake project
+#antlr4 runtime
 sub_proj = cmake.subproject('antlr4-cpp-runtime')
-
-# Fetch the dependency object
 parser_lib = sub_proj.dependency('antlr4_cpp_runtime')
+
+#argparse
+sub_proj = cmake.subproject('argparse')
+argparse_lib = sub_proj.dependency('argparse')
 
 subdir('grammar/antlr4-runtime')
 
@@ -21,5 +23,8 @@ executable('prl',
            'Rule.cpp',
            'ParserVisitor.cpp',
            parser_sources,
-           dependencies : parser_lib,
+           dependencies : [
+            parser_lib,
+            argparse_lib
+           ],
            install : true)

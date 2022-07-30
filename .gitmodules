@@ -1,3 +1,6 @@
 [submodule "subprojects/antlr4-cpp-runtime"]
 	path = subprojects/antlr4-cpp-runtime
 	url = https://github.com/adeharo9/antlr4-cpp-runtime
+[submodule "subprojects/argparse"]
+	path = subprojects/argparse
+	url = https://github.com/p-ranav/argparse
