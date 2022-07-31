@@ -4,11 +4,11 @@ Rule::Rule(Pattern lhs, Pattern rhs) : lhs(lhs), rhs(rhs), uses(-1) {}
 
 Rule::Rule(Pattern lhs, Pattern rhs, int uses) : lhs(lhs), rhs(rhs), uses(uses) {}
 
-Pattern Rule::getLhs() {
+Pattern& Rule::getLhs() {
     return lhs;
 }
 
-Pattern Rule::getRhs() {
+Pattern& Rule::getRhs() {
     return rhs;
 }
 

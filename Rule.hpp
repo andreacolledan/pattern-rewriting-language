@@ -30,14 +30,14 @@ class Rule {
          * 
          * @return the left-hand side of the rewrite rule 
          */
-        Pattern getLhs();
+        Pattern& getLhs();
 
         /**
          * @brief Get the right-hand side of the rewrite rule
          * 
          * @return the right-hand side of the rewrite rule 
          */
-        Pattern getRhs();
+        Pattern& getRhs();
         
         /**
          * @brief Determine if a rule can be used or is exhausted

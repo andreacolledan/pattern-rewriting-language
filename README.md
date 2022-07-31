@@ -123,7 +123,6 @@ Note that the field's height comes first and its width second. For more informat
 ## Roadmap
 This project is still very much WIP. At the moment, only a core set of the language is implemented, and the current roadmap includes the following relevant points:
 
-* Fix efficienncy issues with the current use of `std::vector`
-* Producing documentation for the language,
+* Finish implementing and testing wildcards,
 * Implementing visualization of the rewrite process,
 * ...

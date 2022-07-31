@@ -14,7 +14,7 @@ Pattern::Pattern(std::vector<std::vector<Symbol>> pattern) : internalPattern(pat
     }
 }
 
-bool Pattern::compare(Pattern p, int vOffset, int hOffset, Orientation o) {
+bool Pattern::compare(Pattern& p, int vOffset, int hOffset, Orientation o) {
     if ((o == Orientation::East || o == Orientation::West) && (width < p.width + hOffset || height < p.height + vOffset)) {
         return false; // p does not fit in this pattern
     } else if ((o == Orientation::North || o == Orientation::South) && (width < p.height + hOffset || height < p.width + vOffset)) {
@@ -51,7 +51,7 @@ bool Pattern::compare(Pattern p, int vOffset, int hOffset, Orientation o) {
     }
 }
 
-std::vector<Match> Pattern::search(Pattern p) {
+std::vector<Match> Pattern::search(Pattern& p) {
     std::vector<Match> matches;
     // for every possible placement of p on this
     for (int voff = 0; voff < height - (p.height - 1); voff++) {
@@ -78,7 +78,7 @@ std::vector<Match> Pattern::search(Pattern p) {
     return matches;
 }
 
-bool Pattern::replace(Pattern p, Match m) {
+bool Pattern::replace(Pattern& p, Match m) {
     int voff = m.getVerticalOffset();
     int hoff = m.getHorizontalOffset();
     Orientation o = m.getOrientation();
@@ -116,7 +116,7 @@ bool Pattern::replace(Pattern p, Match m) {
     }
 }
 
-bool Pattern::apply(Rule r) {
+bool Pattern::apply(Rule& r) {
     std::vector<Match> matches = search(r.getLhs());
     int numOfMatches = matches.size();
     if(numOfMatches > 0) {

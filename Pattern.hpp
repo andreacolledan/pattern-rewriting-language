@@ -40,7 +40,7 @@ class Pattern {
          * @param pattern The pattern to look for.
          * @return a vector of matches representing where and in which orientation pattern occurs as a sub-pattern of this pattern.
          */
-        std::vector<Match> search(Pattern pattern);
+        std::vector<Match> search(Pattern& pattern);
 
         /**
          * @brief Replaces the sub-pattern identified by position in this pattern with the provided pattern.
@@ -50,7 +50,7 @@ class Pattern {
          * @return true if the replacement was succesful
          * @return false if the provided pattern does not fit in this pattern
          */
-        bool replace(Pattern pattern, Match position);
+        bool replace(Pattern& pattern, Match position);
 
         /**
          * @brief Search this pattern for occurrences of the sub-pattern that rule r can be applied to,
@@ -60,7 +60,7 @@ class Pattern {
          * @return true if the pattern has been changed as a result of the application of the rule
          * @return false if the rule did non match any sub-pattern of the pattern
          */
-        bool apply(Rule rule);
+        bool apply(Rule& rule);
 
         /**
          * @brief Print this pattern in a compact way.
@@ -128,7 +128,7 @@ class Pattern {
          * @return true if this pattern's sub-pattern matches pattern
          * @return false if this pattern's sub-pattern and rhs differ in at least one symbol
          */
-        bool compare(Pattern pattern, int vOffset, int hOffset, Orientation orientation);
+        bool compare(Pattern& pattern, int vOffset, int hOffset, Orientation orientation);
 
         /**
          * @brief Check if symbol appears among symbols
