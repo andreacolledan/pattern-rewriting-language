@@ -1,13 +1,27 @@
-Symbols ~, c, #, +
+// Example: Islands
+// Generate some island-like landmasses
+
+
+Symbols ~, c, #, +  //~ is water, # is land, + is beach
+
+Starting from ~ (25,75) //Begin with water only
+
 
 Apply rules
 
+//First, randomly spawn 5 land seeds c
 ~ -5> c
+
+//Move seeds randomly until they are trapped
 c~ -> #c
+
+//Turn them all into land
 c -> #
+
+//Where land touches water, spawn a beach
 #~ -> #+
+
+//If two pieces of land are only separated by beaches, bridge them
 #++# -> ####
 #+# -> ###
 
-
-Starting from ~ (30,100)

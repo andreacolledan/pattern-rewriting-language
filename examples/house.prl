@@ -1,0 +1,171 @@
+// Example: House
+// Generate blueprints of houses with a living room and potentially a kitchen, a bedroom and a bathroom
+// The living room may contain a dining table and up to two sofas
+// Kitchens may contain counters, a fridge and a stove
+// Bedrooms may contain a bed and a drawer
+// Bathrooms may contain a showe, a toilet and a sink
+
+Symbols #, ., m, b, e, k, A, +, O, U, =, ^, F, _, L
+
+Starting from . (25, 40)
+
+Apply rules
+
+//Make the living room walls
+.................
+.................
+.................
+.................
+.................
+.................
+.................
+.................
+.................
+.................
+.................
+................. -1>   #################
+                        #mmmmmmmmmmmmmmm#
+                        #mmmmmmmmmmmmmmm#
+                        #mmmmmmmmmmmmmmm#
+                        #mmmmmmmmmmmmmmm#
+                        #mmmmmmmmmmmmmmm#
+                        #mmmmmmmmmmmmmmm#
+                        #mmmmmmmmmmmmmmm#
+                        #mmmmmmmmmmmmmmm#
+                        #mmmmmmmmmmmmmmm#
+                        #mmmmmmmmmmmmmmm#
+                        #################
+
+m#. -1> mA.     //Add an entrance door
+
+//Make a bedroom adjacent to the living room
+mmmmmmmmmm
+##########
+..........
+..........
+..........
+..........
+..........      
+.......... -1>  mmmmmmmmmm
+                ##########
+                #eeeeeeee#
+                #eeeeeeee#
+                #eeeeeeee#
+                #eeeeeeee#
+                #eeeeeeee#
+                ##########
+
+e#m -1> eAm
+
+//Make a king-sized bed
+#####
+eeeee
+eeeee
+eeeee
+eeeee -1>   #####
+            eOOOe
+            e===e
+            e===e
+            eeeee
+
+//Make a drawer
+#####
+eeeee
+eeeee -1>   #####
+            e===e
+            eeeee
+
+e -> .  //Stop bedroom generation
+
+//Make the bathroom adjacent to the living room
+mmmmmmm
+#######
+.......
+.......
+.......
+.......
+....... -1> mmmmmmm
+            #######
+            #bbbbb#
+            #bbbbb#
+            #bbbbb#
+            #bbbbb#
+            #######
+
+b#m -1> bAm
+
+//Make a shower in a corner
+####
+#bbb
+#bbb
+#bbb -1>        ####
+                #++b
+                #++b
+                #bbb
+
+//Make a sink
+###
+bbb -1> ###
+        bOb
+
+//Make a toilet
+###
+bbb -1> ###
+        bUb
+
+b -> .  //Stop generating bathroom
+
+//Make a kitchen adjacent to the living room. It has an open entrance
+mmmmmmm
+#######
+.......
+.......
+.......
+.......
+....... -1> mmmmmmm
+            ##...##
+            #kkkkk#
+            #kkkkk#
+            #kkkkk#
+            #kkkkk#
+            #######
+
+//Making counters
+#k -1> #=
+
+##
+=k ->   ##
+        ==
+
+=k -1> ^k       //Along the counter, place a stove...
+=k -1> Fk       //...and a fridge
+
+k -> .          //Stop generating the kitchen
+
+//Make the dining room table
+mmmmmmmmm
+mmmmmmmmm
+mmmmmmmmm
+mmmmmmmmm
+mmmmmmmmm
+mmmmmmmmm
+mmmmmmmmm -1>   mmmmmmmmm
+                mmmLmLmmm
+                mm=====mm
+                mL=====Lm
+                mm=====mm
+                mmmLmLmmm
+                mmmmmmmmm
+
+//Make some sofas
+#######
+mmmmmmm
+mmmmmmm
+mmmmmmm -2> #######
+            mOOOOOm
+            mO___Om
+            mmmmmmm
+
+m -> .  //Stop generating the living room
+
+
