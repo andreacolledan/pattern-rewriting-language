@@ -21,10 +21,10 @@ $ meson build
 $ meson compile -C build
 ```
 
-Finally, you can run a PRL program `program.prl` by navigating to the `build` folder and running
+Finally, you can run a PRL program `program.prl` with
 
 ```
-$ prl program.prl
+$ build/prl path/to/program.prl
 ```
 
 Some example programs are included in the `examples` folder. For a list of supported command-line options, run
