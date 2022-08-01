@@ -29,7 +29,7 @@ $ build/prl path/to/program.prl
 
 Some example programs are included in the `examples` folder. For a list of supported command-line options, run
 ```
-$ prl --help
+$ build/prl --help
 ```
 
 ## The PRL language
