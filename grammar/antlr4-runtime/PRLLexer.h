@@ -12,9 +12,9 @@
 class  PRLLexer : public antlr4::Lexer {
 public:
   enum {
-    T__0 = 1, T__1 = 2, SYMBOL_ID = 3, SYMBOL_WC = 4, SYMBOL_KW = 5, RULES_KW = 6, 
-    NN_NUMBER = 7, IS_KW = 8, LPAR = 9, RPAR = 10, COMMA = 11, BR = 12, 
-    WS = 13
+    SYMBOL_KW = 1, RULES_KW = 2, IS_KW = 3, LPAR = 4, RPAR = 5, COMMA = 6, 
+    ARROWTAIL = 7, ARROWHEAD = 8, NN_NUMBER = 9, SYMBOL_WC = 10, SYMBOL_ID = 11, 
+    BR = 12, WS = 13, COM = 14
   };
 
   explicit PRLLexer(antlr4::CharStream *input);

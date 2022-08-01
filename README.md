@@ -42,7 +42,7 @@ The symbol declarations always come first. They begin with the keyword `Symbols`
 ```
 Symbols ~, c, #, +
 ```
-declares 4 symbols which can then be used in the rest of the program. At the moment, symbols are limited to single characters.
+declares 4 symbols which can then be used in the rest of the program. At the moment, symbols are limited to single ASCII symbols exluding `'('`,`')'`,`','`,`'-'`,`'>'`,`'*'` and digits.
 
 ### Rule section
 
@@ -120,9 +120,27 @@ Starting from ~ (5,20)
 ```
 Note that the field's height comes first and its width second. For more information on PRL's syntax, refer to the examples in the `examples` folder.
 
+### Comments
+
+At the moment, only single-line comments are supported. Comments are introduced by `//`. For example:
+```
+Symbols a, b
+Starting from a (20,20) //Begin with only 'a's
+
+Apply rules
+
+//Turn all 'a's into 'b's
+a -> b
+```
+
+## Visualization
+
+At the moment, the only way to visualize the output of a PRL program is by having it printed to the standard output (default behavior). In order to avoid distorsion, it is suggested to employ a square font such as [Square](https://strlen.com/square/) when doing so.
+
 ## Roadmap
 This project is still very much WIP. At the moment, only a core set of the language is implemented, and the current roadmap includes the following relevant points:
 
 * Finish implementing and testing wildcards,
-* Implementing visualization of the rewrite process,
+* Implement rule blocks
+* Implement visualization of the rewrite process,
 * ...

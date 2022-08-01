@@ -1,5 +1,6 @@
 rbuild/
 dbuild/
+grammar/testgrammar.prl
 
 .vscode
 .DS_Store
