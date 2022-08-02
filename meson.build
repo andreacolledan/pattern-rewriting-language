@@ -14,7 +14,7 @@ argparse_lib = sub_proj.dependency('argparse')
 
 subdir('grammar/antlr4-runtime')
 
-executable('prl',
+exe = executable('prl',
            'Symbol.cpp',
            'Cartridge.cpp',
            'Match.cpp',
@@ -28,3 +28,8 @@ executable('prl',
             argparse_lib
            ],
            install : true)
+
+#test example projects
+test('islands', exe, args: ['/Users/andreacolledan/Projects/pattern-rewriting-language/examples/islands.prl'])
+test('dungeon', exe, args: ['/Users/andreacolledan/Projects/pattern-rewriting-language/examples/dungeon.prl'])
+test('house', exe, args: ['/Users/andreacolledan/Projects/pattern-rewriting-language/examples/house.prl'])
