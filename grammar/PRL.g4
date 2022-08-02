@@ -9,7 +9,7 @@ Whitespace policy:
  */
 
 prog : BR* symbolSection BR+//symbol declaration
-        (ruleSection? BR+ initialStateSection | initialStateSection BR+ ruleSection?) //both orders are acceptable
+        ((ruleSection BR+)? initialStateSection | initialStateSection (BR+ ruleSection)?) //both orders are acceptable
         BR* EOF; //possible trailing line breaks, then end file
 
 symbolSection : SYMBOL_KW SYMBOL_ID (COMMA SYMBOL_ID)*;

@@ -8,9 +8,11 @@ antlrcpp::Any ParserVisitor::visitProg(PRLParser::ProgContext *ctx) {
     for (Symbol symbol : symbols) {
         cartridge.defineSymbol(symbol);
     }
-    std::vector<Rule> rules = visitRuleSection(ctx->ruleSection()).as<std::vector<Rule>>();
-    for (Rule rule : rules) {
-        cartridge.defineRule(rule);
+    if (ctx->ruleSection()) { //Rule section is optional, others are mandatory
+        std::vector<Rule> rules = visitRuleSection(ctx->ruleSection()).as<std::vector<Rule>>();
+        for (Rule rule : rules) {
+            cartridge.defineRule(rule);
+        }
     }
     Pattern startingField = visitInitialStateSection(ctx->initialStateSection()).as<Pattern>();
     cartridge.setStartingField(startingField);
